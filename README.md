@@ -40,6 +40,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#end-points">End-Points</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -98,6 +99,17 @@ This project includes:
 - Settings modules for deploying with Heroku
 - Django commands for renaming your project and creating a superuser
 - A cli tool for setting environment variables for deployment
+
+### End-Points
+
+| METHOD     | PATH                   | PURPOSE                                                      |
+| :--------- | :--------------------- | :----------------------------------------------------------- |
+| GET        | accounts/data/         | Retrieve data of the currently logged in user. Anonymous users can not access this page. |
+| GET        | accounts/users/        | A list of all the users in the database.                     |
+| POST       | accounts/users/        | Create a new user using the data that accompanies the POST request. |
+| PATCH/ PUT | accounts/users/`<pk>`/ | Update, or change all user details for user with this `pk`.  |
+| POST       | token/login/           | Send a `POST` request with the correct credentials and this will respond with a login token called `auth_token`. |
+| POST       | token/logout/          | Send a `POST` request with the `auth_token` in the header and the corresponding user will be logged out. |
 
 <!-- ROADMAP -->
 ## Roadmap
