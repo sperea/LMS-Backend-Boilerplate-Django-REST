@@ -130,6 +130,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+# backend/settings.py
+# Turn off blanket CORS ('*') in favour of whitelisting.
+CORS_ORIGIN_ALLOW_ALL = False
+# Only process CORS on the following paths requested by clients.
+#CORS_URLS_REGEX = r'^(/api/).*$'
+# When CORS kicks in, only allow origins matching the sites in the whitelist:
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS').split(',')
+# Allow credentials for CORS-controlled routes.
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
