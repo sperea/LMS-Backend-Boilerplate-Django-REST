@@ -1,1 +1,1 @@
-web: gunicorn elearning_backend.wsgi
+web: gunicorn main.wsgi
