@@ -14,7 +14,7 @@ class CourseORMTest(TestCase):
         pass
 
 
-    def test_Topic_ORM_creation(self):
+    def test_topic_creation(self):
         new_teacher = Teacher.objects.all()[0]
         CourseORM(name = "prueba",
             slug = "prueba",
