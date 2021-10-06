@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'accounts.apps.AccountsConfig',
+    'framework',
+    'courses',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'elearning_backend.urls'
+ROOT_URLCONF = 'master.urls'
 
 TEMPLATES = [
     {
@@ -65,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'elearning_backend.wsgi.application'
+WSGI_APPLICATION = 'master.wsgi.application'
 
 
 # Database
