@@ -20,9 +20,11 @@ class GetCourseTests(APITestCase):
         new_teacher = Teacher.objects.all()[0]
         CourseORM(name = "prueba",
             slug = "prueba",
+            code = "XXX",
             description = "prueba",
             teacher = new_teacher).save()
+        
         client = APIClient()
-        client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.token}')
-        response = client.get('/course-info/1/', {}, format='json')
+        client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
+        response = client.get('/courses/course-info/%s/' % ("XXX"), {}, format='json')
         assert response.status_code == 200
