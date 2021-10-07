@@ -5,8 +5,8 @@ from django.views import View
 # from rest_framework import authentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from rest_framework_simplejwt.authentication import JWTAuthentication
-
+#from rest_framework_simplejwt.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
 
 class ViewWrapper(APIView):
     # we have created a view wrapper
@@ -14,7 +14,7 @@ class ViewWrapper(APIView):
     # our views from the framework
     view_factory = None
 
-    authentication_classes = [JWTAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):

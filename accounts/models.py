@@ -30,7 +30,7 @@ class Student(models.Model):
                             verbose_name="Student code")
 
     def __str__(self):
-        return self.user.get_username
+        return self.user.email
 
 
 class Teacher(models.Model):
@@ -39,4 +39,4 @@ class Teacher(models.Model):
                             verbose_name="Teacher code")
 
     def __str__(self):
-        return self.user.get_username
+        return self.user.email

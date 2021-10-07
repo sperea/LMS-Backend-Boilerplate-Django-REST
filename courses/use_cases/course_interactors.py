@@ -10,7 +10,7 @@ class GetCourseInteractor(object):
         return self
 
     def execute(self):
-        return self.course_repo.get_course(code=self.code)
+        return self.course_repo.get_course(self.code)
 
 
 class GetCourseInteractorFactory(object):

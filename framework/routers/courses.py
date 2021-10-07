@@ -5,7 +5,7 @@ from courses.views.course import GetCourseViewFactory
 app_name = 'courses'
 
 urlpatterns = [
-    path('course-info/<int:code>/',
+    path('course-info/<code>/',
          ViewWrapper.as_view(view_factory=GetCourseViewFactory),
-         name='course'),
+         name='course-info'),
 ]

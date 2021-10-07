@@ -11,7 +11,7 @@ class CourseDatabaseRepo(object):
         except CourseORM.DoesNotExist:
             raise ObjectDoesNotExist()
 
-        return self._decode_orm_product(orm_course)
+        return self._decode_orm_course(orm_course)
 
     def _decode_orm_course(self, orm_course):
         return Course(
@@ -23,7 +23,6 @@ class CourseDatabaseRepo(object):
 
 class CourseDatabaseRepoFactory(object):
 
-	@staticmethod
-	def get():
-		return CourseDatabaseRepo() 
-
+    @staticmethod
+    def get():
+        return CourseDatabaseRepo()

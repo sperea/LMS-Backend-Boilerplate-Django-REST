@@ -5,8 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 class GetCourseView(object):
 
-    def __init__(self, get_product_interactor):
-        self.get_product_interactor = get_product_interactor
+    def __init__(self, get_course_interactor):
+        self.get_course_interactor = get_course_interactor
 
     def get(self, code):
         try:
@@ -24,6 +24,6 @@ class GetCourseView(object):
 class GetCourseViewFactory(object):
 
     @staticmethod
-    def create():
+    def create(request):
         get_course_interactor = GetCourseInteractorFactory.get()
         return GetCourseView(get_course_interactor)

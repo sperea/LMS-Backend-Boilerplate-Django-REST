@@ -13,9 +13,9 @@ class Topicline(admin.StackedInline):
 
 @admin.register(CourseORM)
 class CourseORMAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'code']
+    list_display = ['id', 'name', 'slug', 'code']
     list_filter = ['name']
-    search_fields = ['name', 'slug', 'code']
+    search_fields = ['id', 'name', 'slug', 'code']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ModuleInline]
 

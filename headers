@@ -1,0 +1,12 @@
+HTTP/1.1 401 Unauthorized
+Date: Thu, 07 Oct 2021 07:49:56 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+WWW-Authenticate: Bearer realm="api"
+Vary: Accept, Origin
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 65
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
