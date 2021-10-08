@@ -19,7 +19,7 @@ class CourseSerializer:
         return serialized_list
 
     @staticmethod
-    def serialize_list_iterator(course_list):
+    def serialize_iterator(course_list):
         serialized_list = []
         iterator = CoursesIterator(course_list)
         while True:
