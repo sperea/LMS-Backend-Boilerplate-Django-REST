@@ -28,3 +28,17 @@ class GetCourseTests(APITestCase):
         client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
         response = client.get('/courses/course-info/%s/' % ("XXX"), {}, format='json')
         assert response.status_code == 200
+
+    def test_get_all_courses(self):
+        Teacher.objects.create(user=self.user)
+        new_teacher = Teacher.objects.all()[0]
+        CourseORM(name = "prueba",
+            slug = "prueba",
+            code = "XXX",
+            description = "prueba",
+            teacher = new_teacher).save()
+        
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
+        response = client.get('/courses/all-courses/', {}, format='json')
+        assert response.status_code == 200

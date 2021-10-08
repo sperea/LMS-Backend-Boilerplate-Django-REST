@@ -1,4 +1,5 @@
 from courses.use_cases.course_interactors import GetCourseInteractorFactory
+from courses.use_cases.course_interactors import GetAllCoursesInteractorFactory
 from courses.serializers.course import CourseSerializer
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -27,3 +28,29 @@ class GetCourseViewFactory(object):
     def create(request):
         get_course_interactor = GetCourseInteractorFactory.get()
         return GetCourseView(get_course_interactor)
+
+
+class GetAllCourseView(object):
+
+    def __init__(self, get_course_interactor):
+        self.get_all_courses_interactor = get_course_interactor
+
+    def get(self):
+        try:
+            courses = self.get_all_courses_interactor.execute() 
+        except ObjectDoesNotExist:
+            body = {'error': 'Course does not exist!'}
+            status = 404
+        else:
+            body = CourseSerializer.serialize_list(courses)
+            status = 200
+
+        return body, status
+
+
+class GetAllCoursesViewFactory(object):
+
+    @staticmethod
+    def create(request):
+        get_course_interactor = GetAllCoursesInteractorFactory.get()
+        return GetAllCourseView(get_course_interactor)

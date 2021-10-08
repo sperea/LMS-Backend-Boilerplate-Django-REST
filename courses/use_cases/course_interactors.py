@@ -19,3 +19,20 @@ class GetCourseInteractorFactory(object):
     def get():
         course_repo = CourseRepoFactory.get()
         return GetCourseInteractor(course_repo)
+
+
+class GetAllCoursesInteractor(object):
+
+    def __init__(self, course_repo):
+        self.course_repo = course_repo
+
+    def execute(self):
+        return self.course_repo.get_all()
+
+
+class GetAllCoursesInteractorFactory(object):
+
+    @staticmethod
+    def get():
+        course_repo = CourseRepoFactory.get()
+        return GetAllCoursesInteractor(course_repo)

@@ -9,6 +9,10 @@ class CourseRepo(object):
         course = self.db_repo.get_course(code)
         return course
 
+    def get_all(self):
+        courses = self.db_repo.get_all()
+        return courses
+
 
 class CourseRepoFactory(object):
 
