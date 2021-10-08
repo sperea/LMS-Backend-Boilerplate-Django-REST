@@ -1,3 +1,5 @@
+from courses.entities.course import CoursesIterator
+
 class CourseSerializer:
 
     @staticmethod
@@ -15,3 +17,14 @@ class CourseSerializer:
         for course in course_list:
             serialized_list.append(CourseSerializer.serialize(course))
         return serialized_list
+
+    @staticmethod
+    def serialize_list_iterator(course_list):
+        serialized_list = []
+        iterator = CoursesIterator(course_list)
+        while True:
+            try:
+                course = next(iterator)
+                serialized_list.append(CourseSerializer.serialize(course))
+            except StopIteration:
+                break
