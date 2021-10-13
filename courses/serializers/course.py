@@ -7,7 +7,8 @@ class CourseSerializer:
             'code': course.code,
             'slug': course.slug,
             'code': course.code,
-            'description': course.description
+            'description': course.description,
+            'image': course.image
         }
 
     @staticmethod

@@ -40,7 +40,8 @@ class CourseDatabaseRepo(object):
             name=orm_course.name,
             slug=orm_course.slug,
             code=orm_course.code,
-            description=orm_course.description)
+            description=orm_course.description,
+            image=orm_course.image.name)
 
 
 class CourseDatabaseRepoFactory(object):
