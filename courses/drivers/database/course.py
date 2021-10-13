@@ -1,7 +1,8 @@
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
 from framework.models.courses import CourseORM
+from accounts.models import Student
 from courses.entities.course import Course
-from courses.entities.course import Courses
 
 
 class CourseDatabaseRepo(object):
@@ -16,6 +17,16 @@ class CourseDatabaseRepo(object):
 
     def get_all(self):
         courses = CourseORM.objects.all()
+        if not courses.exists():
+            raise ObjectDoesNotExist()
+        courses_list = []
+        for course in courses:
+            courses_list.append(self._decode_orm_course(course))
+        return courses_list
+
+    def get_all_by_student(self, code):
+        student = get_object_or_404(Student, code=code)
+        courses = CourseORM.objects.filter(students__in=[student])
         if not courses.exists():
             raise ObjectDoesNotExist()
         courses_list = []

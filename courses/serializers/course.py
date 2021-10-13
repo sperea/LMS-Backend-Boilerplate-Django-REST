@@ -1,4 +1,3 @@
-from courses.entities.course import CoursesIterator
 
 class CourseSerializer:
 

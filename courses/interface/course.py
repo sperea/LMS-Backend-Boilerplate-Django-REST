@@ -13,6 +13,9 @@ class CourseRepo(object):
         courses = self.db_repo.get_all()
         return courses
 
+    def get_all_by_student(self, code):
+        courses = self.db_repo.get_all_by_student(code)
+        return courses
 
 class CourseRepoFactory(object):
 
