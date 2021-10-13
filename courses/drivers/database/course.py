@@ -15,25 +15,14 @@ class CourseDatabaseRepo(object):
         return self._decode_orm_course(orm_course)
 
     def get_all(self):
-        all_courses = CourseORM.objects.all()
-        if not all_courses.exists():
+        courses = CourseORM.objects.all()
+        if not courses.exists():
             raise ObjectDoesNotExist()
-        courses = Courses()
-        for course in all_courses:
-            courses.append(self._decode_orm_course(course))
+        courses_list = []
+        for course in courses:
+            courses_list.append(self._decode_orm_course(course))
+        return courses_list
 
-        return courses
-
-    def get_all_filter_by_user(self, username):
-        orm_course = CourseORM.objects.all()
-        if not orm_course.exists():
-            raise ObjectDoesNotExist()
-        courses = Courses()
-        courses_list = orm_course.fetchall()
-        for course in courses_list:
-            courses.append(self._decode_orm_course(course))
-
-        return courses
 
     def _decode_orm_course(self, orm_course):
         return Course(
