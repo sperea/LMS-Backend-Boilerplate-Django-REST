@@ -1,8 +1,6 @@
 from django.test import TestCase
 from accounts.models import *
 from framework.models.courses import *
-import tempfile
-from django.core.files.uploadedfile import SimpleUploadedFile
 
 class CourseORMTest(TestCase):
 
