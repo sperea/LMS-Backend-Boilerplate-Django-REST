@@ -17,17 +17,11 @@ class CourseORMTest(TestCase):
 
 
     def test_topic_creation(self):
-        small_gif = (
-            b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
-            b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
-            b'\x02\x4c\x01\x00\x3b'
-        )
         new_teacher = Teacher.objects.all()[0]
         CourseORM(name = "prueba",
             slug = "prueba",
             description = "prueba",
-            teacher = new_teacher,
-            image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif')).save()
+            teacher = new_teacher).save()
         ModuleORM(
             title = "prueba",
             description = "prueba",

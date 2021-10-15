@@ -18,11 +18,6 @@ class GetCourseTests(APITestCase):
         client = APIClient()
         response = client.post('/token/login/', {'email': 'js@js.com', 'password': 'js.sj'}, format='json')
         self.token = response.data["auth_token"]
-        self.small_gif = (
-            b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
-            b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
-            b'\x02\x4c\x01\x00\x3b'
-        )
     def test_get_course_by_code(self):
         Teacher.objects.create(user=self.user)
         new_teacher = Teacher.objects.all()[0]
@@ -31,8 +26,7 @@ class GetCourseTests(APITestCase):
             slug = "prueba",
             code = "XXX",
             description = "prueba",
-            teacher = new_teacher,
-            image=SimpleUploadedFile('small.gif', self.small_gif, content_type='image/gif')).save()
+            teacher = new_teacher).save()
         
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
@@ -46,8 +40,7 @@ class GetCourseTests(APITestCase):
             slug = "prueba",
             code = "XXX",
             description = "prueba",
-            teacher = new_teacher,
-            image=SimpleUploadedFile('small.gif', self.small_gif, content_type='image/gif')).save()
+            teacher = new_teacher).save()
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
         response = client.get('/courses/all-courses/', {}, format='json')
@@ -60,8 +53,7 @@ class GetCourseTests(APITestCase):
             slug ="prueba",
             code="XXX",
             description="prueba",
-            teacher=new_teacher,
-            image=SimpleUploadedFile('small.gif', self.small_gif, content_type='image/gif'))
+            teacher=new_teacher)
         new_student = Student.objects.create(user=self.user)
         new_student.save()
         new_course.students.add(new_student)
