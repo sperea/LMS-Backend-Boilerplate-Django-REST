@@ -2,8 +2,9 @@
 
 class Course(object):
 
-    def __init__(self, name, slug, code, description, image):
+    def __init__(self, name, slug, code, description, image, hours):
         self._name = name
+        self._hours = hours
         self._slug = slug
         self._code = code
         self._description = description
@@ -12,6 +13,10 @@ class Course(object):
     @property
     def name(self):
         return self._name
+
+    @property
+    def hours(self):
+        return self._hours
 
     @property
     def slug(self):

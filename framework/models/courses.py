@@ -14,6 +14,7 @@ class CourseORM(models.Model):
     slug = models.SlugField(db_index=True, max_length=150)
     code = models.CharField(max_length=6, default=uuid.uuid4().hex.upper()[0:6], blank=True, verbose_name="Code")
     image = cloudinary.models.CloudinaryField('image', null=True, blank=True)
+    hours = models.CharField(max_length=4)
     #image = models.ImageField(null=True, blank=True, upload_to='courses_images')
     description = models.TextField()
     teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT)

@@ -6,7 +6,8 @@ class CourseSerializer:
         return {
             'code': course.code,
             'slug': course.slug,
-            'code': course.code,
+            'name': course.name,
+            'hours': course.hours,
             'description': course.description,
             'image': str(course.image.url)
         }

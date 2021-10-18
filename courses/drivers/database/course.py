@@ -38,6 +38,7 @@ class CourseDatabaseRepo(object):
     def _decode_orm_course(self, orm_course):
         return Course(
             name=orm_course.name,
+            hours=orm_course.hours,
             slug=orm_course.slug,
             code=orm_course.code,
             description=orm_course.description,
