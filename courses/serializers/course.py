@@ -9,8 +9,9 @@ class CourseSerializer:
             'name': course.name,
             'hours': course.hours,
             'description': course.description,
-            'image': str(course.image.url)
+            'image': (lambda image: '' if image is None else image.url)(course.image)
         }
+
 
     @staticmethod
     def serialize_list(course_list):

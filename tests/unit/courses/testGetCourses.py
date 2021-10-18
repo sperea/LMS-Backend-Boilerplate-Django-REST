@@ -24,6 +24,7 @@ class GetCourseTests(APITestCase):
         
         CourseORM(name = "prueba",
             slug = "prueba",
+            hours = "150",
             code = "XXX",
             description = "prueba",
             teacher = new_teacher).save()
@@ -38,6 +39,7 @@ class GetCourseTests(APITestCase):
         new_teacher = Teacher.objects.all()[0]
         CourseORM(name = "prueba",
             slug = "prueba",
+            hours = "150",
             code = "XXX",
             description = "prueba",
             teacher = new_teacher).save()
@@ -51,6 +53,7 @@ class GetCourseTests(APITestCase):
         new_teacher = Teacher.objects.all()[0]
         new_course = CourseORM(name="prueba",
             slug ="prueba",
+            hours = "150",
             code="XXX",
             description="prueba",
             teacher=new_teacher)
